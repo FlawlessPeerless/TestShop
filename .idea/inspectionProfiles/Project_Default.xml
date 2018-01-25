@@ -4,5 +4,9 @@
     <inspection_tool class="AndroidLintSQLiteString" enabled="true" level="WARNING" enabled_by_default="false">
       <scope name="Project Files" level="TYPO" enabled="true" />
     </inspection_tool>
+    <inspection_tool class="ConstantConditions" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="SUGGEST_NULLABLE_ANNOTATIONS" value="false" />
+      <option name="DONT_REPORT_TRUE_ASSERT_STATEMENTS" value="false" />
+    </inspection_tool>
   </profile>
 </component>
