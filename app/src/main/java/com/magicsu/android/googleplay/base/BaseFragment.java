@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.magicsu.android.googleplay.ui.view.StatePage;
 
@@ -15,13 +14,33 @@ import com.magicsu.android.googleplay.ui.view.StatePage;
  * Created by admin on 2018/1/25.
  */
 
-public class BaseFragment extends Fragment {
-    private StatePage mPageLoading;
+public abstract class BaseFragment extends Fragment {
+    private StatePage mStatePage;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mPageLoading = new StatePage(getContext());
-        return mPageLoading;
+        mStatePage = new StatePage(getContext()) {
+            @Override
+            public View onCreateSuccessView() {
+                return BaseFragment.this.onCreateSuccessView();
+            }
+
+            @Override
+            public ResultState onLoad() {
+                return BaseFragment.this.onLoad();
+            }
+        };
+        return mStatePage;
+    }
+
+    public abstract View onCreateSuccessView();
+
+    public abstract StatePage.ResultState onLoad();
+
+    public void loadData() {
+        if (mStatePage != null) {
+            mStatePage.loadData();
+        }
     }
 }

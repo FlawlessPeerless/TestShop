@@ -53,6 +53,16 @@ public class MainActivity extends BaseActivity {
         mViewPager.setAdapter(mPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         setTapLayoutDivider();
+
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                BaseFragment fragment = FragmentFactory.createFragment(position);
+                fragment.loadData();
+
+            }
+        });
     }
 
     /**

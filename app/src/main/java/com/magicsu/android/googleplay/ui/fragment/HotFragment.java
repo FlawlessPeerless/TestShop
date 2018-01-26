@@ -1,6 +1,9 @@
 package com.magicsu.android.googleplay.ui.fragment;
 
+import android.view.View;
+
 import com.magicsu.android.googleplay.base.BaseFragment;
+import com.magicsu.android.googleplay.ui.view.StatePage;
 
 /**
  * 排行
@@ -8,4 +11,13 @@ import com.magicsu.android.googleplay.base.BaseFragment;
  */
 
 public class HotFragment extends BaseFragment {
+    @Override
+    public View onCreateSuccessView() {
+        return null;
+    }
+
+    @Override
+    public StatePage.ResultState onLoad() {
+        return null;
+    }
 }
